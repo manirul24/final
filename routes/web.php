@@ -2,16 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Middleware\TokenVerificationMiddleware;
 use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Middleware\TokenVerificationMiddleware;
+use App\Http\Controllers\Admin\RentalController;
+use App\Http\Controllers\Frontend\CarFontController;
+use App\Http\Controllers\Frontend\RentalFrontController;
 
 
 
 Route::get('/', function () {
-    return view('pages.auth.login-page');
+    return view('welcome');
 });
-
 
 
 // Web API Routes
@@ -28,8 +31,19 @@ Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
 Route::get('/logout',[UserController::class,'UserLogout']);
 
 
-Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware([TokenVerificationMiddleware::class]);
-
- 
-
 Route::resource('cars', CarController::class)->middleware([TokenVerificationMiddleware::class]);
+Route::resource('customers', CustomerController::class)->middleware([TokenVerificationMiddleware::class]);
+Route::resource('rentals', RentalController::class)->middleware([TokenVerificationMiddleware::class]);
+
+//Route::get('/dashboard', [RentalController::class, 'statistics'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware([TokenVerificationMiddleware::class]); 
+
+// fontend routes
+ Route::get('/cars-index', [CarFontController::class, 'index'])->name('cars.index');
+
+
+ // Display form for creating a booking
+Route::get('/bookings', [RentalFrontController::class, 'create'])->name('bookings.create');
+
+// Store the booking
+Route::post('/bookings', [RentalFrontController::class, 'store'])->name('bookings.store');

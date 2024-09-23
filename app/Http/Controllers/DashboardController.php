@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\victim_student;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\car;
+use App\Models\Rental;
 
 class DashboardController extends Controller
 {
@@ -15,14 +17,22 @@ class DashboardController extends Controller
           $user =$request->header('userType'); // Get the logged-in user
         // Check if the user is admin or customer and return the corresponding dashboard view accordingly.
         // This assumes that the User model has a method isAdmin() and isCustomer() that returns a boolean value.
- 
+  
 
     if ($user=='admin') {
-        return view('pages.dashboard.dashboard-admin-page'); // Admin dashboard view
+
+         $totalCars = Car::count();
+        $availableCars = Car::where('availability', '1')->count(); // Adjust according to your column name
+        $totalRentals = Rental::count();
+        $totalEarnings = Rental::sum('total_cost');
+
+        return view('report.statistics-admin', compact('totalCars', 'availableCars', 'totalRentals', 'totalEarnings'));
+
+       // return view('report.statistics-admin' ); // Admin dashboard view
     }
 
     if ($user=='customer') {
-        return view('pages.dashboard.dashboard-customer-page'); // Customer dashboard view
+        return view('pages.dashboard.dashboard-customer-page',compact('user')); // Customer dashboard view
     }
 
     return view('dashboard.default'); // Default or fallback view

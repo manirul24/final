@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name'); // STRING for the user's name
             $table->string('email')->unique(); // STRING for the email, unique constraint
             $table->string('password'); // STRING for the password
+             $table->string('phone',20); // STRING for the password
+             $table->string('address'); // STRING for the password
             $table->enum('role', ['admin', 'customer'])->default('customer'); // ENUM for role (admin/customer)
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

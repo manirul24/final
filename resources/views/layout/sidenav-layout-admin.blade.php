@@ -73,25 +73,25 @@
 
 
     <div id="sideNavRef" class="side-nav-open">
-        admin
+
         <a href="{{ url('/dashboard') }}" class="side-bar-item">
             <i class="bi bi-graph-up"></i>
             <span class="side-bar-item-caption">Dashboard</span>
         </a>
 
-        <a href="{{ url('/customerPage') }}" class="side-bar-item">
+        <a href="{{ url('/cars') }}" class="side-bar-item">
             <i class="bi bi-people"></i>
-            <span class="side-bar-item-caption">Customer</span>
+            <span class="side-bar-item-caption">Car</span>
         </a>
 
-        <a href="{{ url('/categoryPage') }}" class="side-bar-item">
+        <a href="{{ url('/customers') }}" class="side-bar-item">
             <i class="bi bi-list-nested"></i>
-            <span class="side-bar-item-caption">Category</span>
+            <span class="side-bar-item-caption">customer </span>
         </a>
 
-        <a href="{{ url('/productPage') }}" class="side-bar-item">
+        <a href="{{ url('/rentals') }}" class="side-bar-item">
             <i class="bi bi-bag"></i>
-            <span class="side-bar-item-caption">Product</span>
+            <span class="side-bar-item-caption">Rentals</span>
         </a>
 
         <a href="{{ url('/salePage') }}" class="side-bar-item">
@@ -104,10 +104,7 @@
             <span class="side-bar-item-caption">Invoice</span>
         </a>
 
-        <a href="{{ url('/reportPage') }}" class="side-bar-item">
-            <i class="bi bi-file-earmark-bar-graph"></i>
-            <span class="side-bar-item-caption">Report</span>
-        </a>
+
 
 
     </div>

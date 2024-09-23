@@ -277,6 +277,7 @@ $request->validate([
     function UserLogin(Request $request){
 
           $count = User::where('email', $request->input('email'))->first();
+     
 
         if ($count && Hash::check($request->input('password'), $count->password)) {
 

@@ -51,7 +51,7 @@
                                  <div class="col-md-4 p-2">
 
                                      <label for="availability_status">Availability Status</label>
-                                     <select name="availability_status" class="form-control">
+                                     <select name="availability" class="form-control">
                                          <option value="1">Available</option>
                                          <option value="0">Not Available</option>
                                      </select>
