@@ -18,7 +18,7 @@ class CarSeeder extends Seeder
                 'car_type' => 'Sedan',
                 'daily_rent_price' => 120,
                 'availability' => 'Available',
-                'car_image' => 'https://example.com/images/tesla_model_s.jpg',
+                'car_image' => 'car_images/UbYPt6atPoSrTn0PVaruqUFKSiOA5xikOEZ188va.png',
             ],
             [
                 'name' => 'Ford Mustang',
@@ -28,7 +28,7 @@ class CarSeeder extends Seeder
                 'car_type' => 'Coupe',
                 'daily_rent_price' => 150,
                 'availability' => 'Available',
-                'car_image' => 'https://example.com/images/ford_mustang.jpg',
+                'car_image' => 'car_images/UbYPt6atPoSrTn0PVaruqUFKSiOA5xikOEZ188va.png',
             ],
             [
                 'name' => 'BMW X5',
@@ -38,7 +38,7 @@ class CarSeeder extends Seeder
                 'car_type' => 'SUV',
                 'daily_rent_price' => 200,
                 'availability' => 'Unavailable',
-                'car_image' => 'https://example.com/images/bmw_x5.jpg',
+                'car_image' => 'car_images/UbYPt6atPoSrTn0PVaruqUFKSiOA5xikOEZ188va.png',
             ],
             [
                 'name' => 'Audi A4',
@@ -48,7 +48,7 @@ class CarSeeder extends Seeder
                 'car_type' => 'Sedan',
                 'daily_rent_price' => 100,
                 'availability' => 'Available',
-                'car_image' => 'https://example.com/images/audi_a4.jpg',
+                'car_image' => 'car_images/UbYPt6atPoSrTn0PVaruqUFKSiOA5xikOEZ188va.png',
             ],
             [
                 'name' => 'Mercedes-Benz GLE',
@@ -58,7 +58,7 @@ class CarSeeder extends Seeder
                 'car_type' => 'SUV',
                 'daily_rent_price' => 180,
                 'availability' => 'Available',
-                'car_image' => 'https://example.com/images/mercedes_gle.jpg',
+                'car_image' => 'car_images/UbYPt6atPoSrTn0PVaruqUFKSiOA5xikOEZ188va.png',
             ],
         ]);
     }

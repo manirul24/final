@@ -54,9 +54,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($car->image)
-                                                <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->name }}"
-                                                    width="100">
+                                            @if ($car->car_image)
+                                                <img src="{{ asset('storage/' . $car->car_image) }}"
+                                                    alt="{{ $car->name }}" width="100">
                                             @else
                                                 <p>No Image</p>
                                             @endif

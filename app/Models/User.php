@@ -16,22 +16,31 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
+
+    Public static function isAdmin(){
+        return  "admin";
+        } 
+        Public static function isCustomer(){
+        return  "customer";
+        } 
+
+    // public function isAdmin()
+    // {
+    //     return $this->role === 'admin';
+    // }
 
     /**
      * Check if the user has a customer role.
      *
      * @return bool
      */
-    public function isCustomer()
-    {
-        return $this->role === 'customer';
-    }
+    // public function isCustomer()
+    // {
+    //     return $this->role === 'customer';
+    // }
 
     /**
      * Define a hasMany relationship with the Rental model.

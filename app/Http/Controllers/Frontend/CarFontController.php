@@ -32,7 +32,7 @@ class CarFontController extends Controller
         $carTypes = Car::select('car_type')->distinct()->get();
         $brands = Car::select('brand')->distinct()->get();
 
-        return view('welcome', compact('cars', 'carTypes', 'brands'));
+        return view('search', compact('cars', 'carTypes', 'brands'));
     }
 
 }

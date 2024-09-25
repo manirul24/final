@@ -1,5 +1,5 @@
 @extends('layout.sidenav-layout')
 @section('content')
-    Customer ggsg{{ $user }}
+    Customer ggsg
     @include('components.dashboard.summary')
 @endsection

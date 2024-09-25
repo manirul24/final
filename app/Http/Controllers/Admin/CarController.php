@@ -34,7 +34,7 @@ public function store(Request $request) {
 
     if ($request->hasFile('car_image')) {
         $imagePath = $request->file('car_image')->store('car_images', 'public');
-        $car->image = $imagePath;
+        $car->car_image = $imagePath;
     }
 
     $car->save();

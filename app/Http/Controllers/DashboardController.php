@@ -32,10 +32,12 @@ class DashboardController extends Controller
     }
 
     if ($user=='customer') {
-        return view('pages.dashboard.dashboard-customer-page',compact('user')); // Customer dashboard view
-    }
+           // dd('adad');
+        return view('search',compact('user')); // Customer dashboard view
+    } else {
+            return view('index');
+        }
 
-    return view('dashboard.default'); // Default or fallback view
       
        // return view('pages.dashboard.dashboard-page', compact('isCustomer'));
     }

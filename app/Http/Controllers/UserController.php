@@ -1,19 +1,20 @@
 <?php
 namespace App\Http\Controllers;
 use Exception;
+use App\Models\car;
 use App\Models\User;
 use App\Mail\OTPMail;
-use App\Helper\JWTToken;
-use GuzzleHttp\Psr7\Message;
-use Illuminate\View\View;
-use App\Models\car;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\rental;
-use Flasher\Prime\Translation\Messages;
+use App\Helper\JWTToken;
+use Illuminate\View\View;
+use GuzzleHttp\Psr7\Message;
+use Illuminate\Http\Request;
+use App\Helper\ResponseHelper;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Flasher\Prime\Translation\Messages;
  
 class UserController extends Controller
 {
@@ -212,64 +213,35 @@ $request->validate([
 
  
 
-    function UserRegistration(Request $request){   
+    function UserRegistration(Request $request){              
 
-             
- DB::beginTransaction();
 
         try {
-
-            $college_code = $request->input('college_code');
-
           
-                $collegeNameData=college_list::where('college_code', '=', $college_code)->select('college_name')->first();
-
-
-            if ($collegeNameData !== null) {
 
                $user =  User::create([
-                    'college_code' => $request->input('college_code'),
-                    'college_name' => $collegeNameData->college_name,
-                    'email' => $request->input('email'),
-                    'password' => bcrypt($request->input('password')),
-                    'pin' => $request->input('password'),
-                    'otp' => '',
+                    'name' => $request->input('Name'),
+                     'email' => $request->input('email'),
+                      'password' => bcrypt($request->input('password')),
+                    'phone' => $request->input('mobile'),
+                    'address' => $request->input('address'),               
+                
                 ]);
 
-
-                $id = $user->id;
-               $college_details = college_user_detail::create([
-                    'user_id' =>$id,
-                    'college_code' => $request->input('college_code'),                 
-                    'principal_name' => '',
-                    'v_principal_name' => '',
-                    'clerkname' => '',
-                    'college_phone' => '',
-                    'college_mobile' => '',
-                ]);
-
-                 DB::commit();
-
+            
                 return response()->json([
                     'status' => 'success',
                     'message' => 'User Registration Successfully'
                 ], 200);
 
-            }
-            else{
-                DB::rollBack();
-                 return response()->json([
-                'status' => 'failed',
-                'message' => 'User data Not Valid'
-            ],200);
-            }
+          
 
         } catch (Exception $e) {
              DB::rollBack();
             return response()->json([
                 'status' => 'failed',
                 'message' => 'User Registration Failed'
-            ],200);
+            ],201);
 
         }
     }
@@ -412,6 +384,32 @@ $request->validate([
 
     function UserLogout(){
         return redirect('/')->cookie('token','',-1);
+    }
+
+      public function ProfilePage1(){
+        return view('pages.profile-page');
+    }
+
+     public function CreateProfile(Request $request): JsonResponse
+    {
+        $user_id=$request->header('id');
+        $request->merge(['user_id' =>$user_id]);
+        $data= rental::updateOrCreate(
+            ['user_id' => $user_id],
+            $request->input()
+        );
+        return ResponseHelper::Out('success',$data,200);
+    }
+     function InvoiceList(Request $request){
+        $user_id=$request->header('id');
+        return rental::where('user_id',$user_id)->get();
+    }
+
+        public function ReadProfile(Request $request): JsonResponse
+    {
+        $user_id=$request->header('id');
+        $data=rental::where('user_id',$user_id)->with('user')->first();
+        return ResponseHelper::Out('success',$data,200);
     }
 
 

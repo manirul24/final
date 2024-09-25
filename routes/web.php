@@ -13,7 +13,7 @@ use App\Http\Controllers\Frontend\RentalFrontController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
@@ -29,7 +29,11 @@ Route::get('/userLogin',[UserController::class,'LoginPage']);
 Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
 
 Route::get('/logout',[UserController::class,'UserLogout']);
+Route::get('/profile', [UserController::class, 'ProfilePage1']);
+Route::post('/CreateProfile', [UserController::class, 'CreateProfile'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/ReadProfile', [UserController::class, 'ReadProfile'])->middleware([TokenVerificationMiddleware::class]);
 
+Route::get("/InvoiceList",[UserController::class,'InvoiceList'])->middleware([TokenVerificationMiddleware::class]);
 
 Route::resource('cars', CarController::class)->middleware([TokenVerificationMiddleware::class]);
 Route::resource('customers', CustomerController::class)->middleware([TokenVerificationMiddleware::class]);
@@ -39,11 +43,11 @@ Route::resource('rentals', RentalController::class)->middleware([TokenVerificati
 Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware([TokenVerificationMiddleware::class]); 
 
 // fontend routes
- Route::get('/cars-index', [CarFontController::class, 'index'])->name('cars.index');
+ Route::get('/search', [CarFontController::class, 'index'])->name('search');
 
 
  // Display form for creating a booking
-Route::get('/bookings', [RentalFrontController::class, 'create'])->name('bookings.create');
+Route::get('/bookings/{id}', [RentalFrontController::class, 'create'])->name('bookings.create')->middleware([TokenVerificationMiddleware::class]);
 
 // Store the booking
-Route::post('/bookings', [RentalFrontController::class, 'store'])->name('bookings.store');
+Route::post('/bookings', [RentalFrontController::class, 'store'])->name('bookings.store')->middleware([TokenVerificationMiddleware::class]);
