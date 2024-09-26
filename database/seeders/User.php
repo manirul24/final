@@ -16,7 +16,7 @@ class User extends Seeder
         DB::table('users')->insert([
     [
         'name' => 'John Doe',
-        'email' => 'john.doe@example.com',
+        'email' => 'admin@example.com',
         'password' => bcrypt('password123'), // You should use bcrypt for password encryption
         'phone' => '123-456-7890',
         'address' => '123 Main St, New York, NY',
