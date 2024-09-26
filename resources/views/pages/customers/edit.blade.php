@@ -1,6 +1,7 @@
 @extends('layout.sidenav-layout-admin')
 @section('content')
-    <form action="{{ isset($customer) ? route('customers.update', $user->id) : route('customers.store') }}" method="POST">
+    {{-- <form action="{{ route('cars.update', $car->id) }}" method="POST" enctype="multipart/form-data"> --}}
+    <form action="{{ route('customers.update', $user->id) }}" method="POST">
         @csrf
         @if (isset($user))
             @method('PUT')

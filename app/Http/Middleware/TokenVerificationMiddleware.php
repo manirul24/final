@@ -24,17 +24,24 @@ class TokenVerificationMiddleware
         }
         else{
 
-            if($result->userType=="admin"){
+            if(($request->is('cars')  || $request->is( 'rentals') ) || $result->userType=="admin"){
+           // if($result->userType=="admin"){
                 $request->headers->set('userType',"admin");
+                $request->headers->set('email',$result->userEmail);
+                  $request->headers->set('id',$result->userID);
+              return $next($request);
+                  // return redirect('/dashboard');
+                // return $next($request);
             }
             else{
                 $request->headers->set('userType',"customer");
-            }
+            
             $request->headers->set('email',$result->userEmail);
             $request->headers->set('id',$result->userID);
             // $request->headers->set('college_code',$result->collegeCode);
             // $request->headers->set('college_name',$result->collegeName);
             return $next($request);
+            }
         }
 
 

@@ -38,11 +38,11 @@ class CustomerController extends Controller
 
     User::create($data);
 
-
         // User::create($request->all());
         //   $data['password'] = bcrypt($request->password);
-
-        return redirect()->route('pages.customers.index')->with('success', 'Customer created successfully.');
+ //return view('pages.customers.index')->with('success', 'Customer created successfully.');
+ return redirect('customers')->with('success', 'Customer created successfully.');
+      //  return redirect()->route('pages.customers.index')->with('success', 'Customer created successfully.');
     }
 
     // Show form for editing a customer
@@ -53,23 +53,36 @@ class CustomerController extends Controller
     }
 
     // Update a customer's information
-    public function update(Request $request, User $customer)
+    public function update(Request $request,  $id)
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:customers,email,'.$customer->id,
+            'email' => 'required|email|unique:users,email,'.$id,
             'phone' => 'required',
             'address' => 'required',
         ]);
 
-        $customer->update($request->all());
-        return redirect()->route('pages.customers.index')->with('success', 'Customer updated successfully.');
+         $users = User::findOrFail($id);
+
+        $users->update($request->all());
+           $users->save();
+
+         return redirect('customers')->with('success', 'Customer updated successfully.');
+      //  return redirect()->route('pages.customers.index')->with('success', 'Customer updated successfully.');
     }
 
     // Remove a customer
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
-        return redirect()->route('pages.customers.index')->with('success', 'Customer deleted successfully.');
+         $customers = User::where('role','customer')->get();
+       // dd($id);
+         $user = User::findOrFail($id); // Fetch the user
+    //$user->delete(); // Delete the user
+    $user->forceDelete();
+
+     return redirect('customers')->with('success', 'Customer deleted successfully.');
+         
+        //return view('pages.customers.index',compact('customers'));
+        //return redirect()->route('pages.customers.index')->with('success', 'Customer deleted successfully.');
     }
 }

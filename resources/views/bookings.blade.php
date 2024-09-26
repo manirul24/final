@@ -82,10 +82,10 @@
                                 <!-- Botones de compra -->
                                 <div class="section" style="padding-bottom:20px;">
 
-                                    @if ($cars->availability == 'Available')
-                                        <button class="btn btn-success">
-                                            Bookings</button>
-                                    @endif
+                                    {{-- @if ($cars->availability == 'Available') --}}
+                                    <button class="btn btn-success">
+                                        Bookings</button>
+                                    {{-- @endif --}}
                                 </div>
 
                             </form>

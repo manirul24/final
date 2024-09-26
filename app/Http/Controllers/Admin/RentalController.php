@@ -73,8 +73,8 @@ class RentalController extends Controller
         return view('pages.rentals.edit', compact('rental', 'customers', 'cars'));
     }
 
-    // Update an existing rental
-    public function update(Request $request, Rental $rental)
+
+     public function update(Request $request, Rental $rental)
     {
         $request->validate([
             'customer_id' => 'required',
@@ -89,6 +89,28 @@ class RentalController extends Controller
 
         return redirect()->route('rentals.index')->with('success', 'Rental updated successfully.');
     }
+
+    
+    // Update an existing rental
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'user_id' => 'required',
+    //         'car_id' => 'required',
+    //         'start_date' => 'required|date',
+    //         'end_date' => 'required|date|after_or_equal:start_date',
+    //         'total_cost' => 'required|numeric',
+    //         'status' => 'required|in:ongoing,completed,canceled,Booked,Pending',
+    //     ]);
+
+    //         $rental = Rental::findOrFail($id);
+
+    //     $rental->update($request->all());
+
+    //         $rental->save();
+
+    //     return redirect()->route('rentals.index')->with('success', 'Rental updated successfully.');
+    // }
 
     // Delete a rental
     public function destroy(Rental $rental)

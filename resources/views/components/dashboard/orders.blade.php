@@ -2,21 +2,84 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
             <div class="table-responsive">
+
+
+
+                <h2>Current Bookings</h2>
+
+
                 <table class="table">
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Car</th>
+                            <th>Start Data</th>
+                            <th>End Date</th>
                             <th>Payable</th>
-                            <th>Shipping</th>
-                            <th>Delivery</th>
-                            <th>Payment</th>
-                            <th>More</th>
+                            <th>Actions</th>
+                            <th>Cancel</th>
                         </tr>
                     </thead>
-                    <tbody id="OrderList">
-
-                    </tbody>
+                    @foreach ($currentBookings as $booking)
+                        <tr>
+                            <td>{{ $booking->id }}</td>
+                            <td>{{ $booking->car->name }}</td>
+                            <td>{{ $booking->start_date }}</td>
+                            <td>{{ $booking->end_date }}</td>
+                            <td>{{ $booking->total_cost }}</td>
+                            <td>{{ $booking->status }}</td>
+                            <td>
+                                @if ($booking->status == 'canceled')
+                                    <p>Booking cancelled</p>
+                                @else
+                                    {{-- <p>{{ $booking->car->name }} - Starts: {{ $booking->start_date }}</p> --}}
+                                    <form action="{{ url('bookings/cancel/' . $booking->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary btn-sm">Cancel</button>
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                    </thead>
                 </table>
+
+
+
+                <h2>Past Bookings</h2>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Car</th>
+                            <th>Start Data</th>
+                            <th>End Date</th>
+                            <th>Payable</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    @foreach ($pastBookings as $booking)
+                        <tr>
+                            <td>{{ $booking->id }}</td>
+                            <td>{{ $booking->car->name }}</td>
+                            <td>{{ $booking->start_date }}</td>
+                            <td>{{ $booking->end_date }}</td>
+                            <td>{{ $booking->total_cost }}
+
+
+
+                                {{-- <p>{{ $booking->car->name }} - Ended: {{ $booking->end_date }}</p> --}}
+                            </td>
+                            <td>{{ $booking->status }}</td>
+                        </tr>
+                    @endforeach
+                </table>
+
+
+
+
             </div>
         </div>
     </div>
@@ -50,7 +113,7 @@
         </div>
     </div>
 </div>
-
+{{-- 
 
 <script>
     async function OrderListRequest() {
@@ -107,4 +170,4 @@
         });
 
     }
-</script>
+</script> --}}

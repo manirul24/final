@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name'); // STRING for the car name
             $table->string('brand'); // STRING for the car brand
             $table->string('model'); // STRING for the car model
-            $table->integer('year'); // INTEGER for the year of manufacture
+            $table->integer('year_of_manufacture'); // INTEGER for the year of manufacture
             $table->string('car_type'); // STRING for the car type (e.g., sedan, SUV, etc.)
             $table->decimal('daily_rent_price', 8, 2); // DECIMAL for daily rent price with 8 digits and 2 decimal places
             $table->enum('availability',['Unavailable', 'Available'])->default('Available'); // BOOLEAN for car availability status

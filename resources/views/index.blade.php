@@ -33,28 +33,36 @@
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-3 p-3">
                     <div class="card px-0 text-center">
-                        <img class=" card-img-top mb-3 w-100" src="{{ asset('/images/man.jpg') }}" alt="">
+                        <img class=" card-img-top mb-3 w-100"
+                            src="{{ url('https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg') }}"
+                            alt="">
                         <h5>Danny Bailey</h5>
                         <p class="text-muted mb-4">CEO &amp; Founder</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 p-3">
                     <div class="card px-0 text-center">
-                        <img class=" card-img-top mb-3 w-100" src="{{ asset('/images/man.jpg') }}" alt="">
+                        <img class=" card-img-top mb-3 w-100"
+                            src="{{ url('https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg') }}"
+                            alt="">
                         <h5>Danny Bailey</h5>
                         <p class="text-muted mb-4">CEO &amp; Founder</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 p-3">
                     <div class="card px-0 text-center">
-                        <img class=" card-img-top mb-3 w-100" src="{{ asset('/images/man.jpg') }}" alt="">
+                        <img class=" card-img-top mb-3 w-100"
+                            src="{{ url('https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg') }}"
+                            alt="">
                         <h5>Danny Bailey</h5>
                         <p class="text-muted mb-4">CEO &amp; Founder</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 p-3">
                     <div class="card px-0 text-center">
-                        <img class=" card-img-top mb-3 w-100" src="{{ asset('/images/man.jpg') }}" alt="">
+                        <img class=" card-img-top mb-3 w-100"
+                            src="{{ url('https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg') }}"
+                            alt="">
                         <h5>Danny Bailey</h5>
                         <p class="text-muted mb-4">CEO &amp; Founder</p>
                     </div>
@@ -66,7 +74,7 @@
     <br />
 
     <section class="py-5">
-        <div class="container">
+        <div class="container" name="contact">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-5 mb-5 mb-lg-0">
                     <h2 class="fw-bold mb-5">Reach Out to Us: Let's Connect and Explore Opportunities Together</h2>

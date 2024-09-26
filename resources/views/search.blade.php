@@ -118,7 +118,7 @@
                                                     <p>Daily Rent: ${{ $car->daily_rent_price }}</p>
                                                 </td>
                                                 <td><a href="{{ url('bookings', $car->id) }}"
-                                                        class="btn btn-sm btn-outline-primary">View</a>
+                                                        class="btn btn-sm btn-outline-primary">Booking</a>
 
                                                 </td>
                                             </tr>

@@ -386,9 +386,39 @@ $request->validate([
         return redirect('/')->cookie('token','',-1);
     }
 
-      public function ProfilePage1(){
-        return view('pages.profile-page');
+      public function ProfilePage1(Request $request){
+
+
+                $user_id=$request->header('id');
+  $users=User::find($user_id);
+
+        $currentBookings = rental::where('start_date', '>', now())->where('user_id',$user_id)->get();
+    $pastBookings = rental::where('start_date', '<=', now())->where('user_id',$user_id)->get();
+
+       // dd($user_id);
+    return view('pages.profile-page', compact('currentBookings', 'pastBookings','users'));
+
+       // return view('pages.profile-page');
     }
+
+    public function cancel($id)
+{
+    
+     // dd($id);
+     
+     $rental = Rental::findOrFail($id);
+
+    if ($rental->start_date > now()) {
+        $rental->status = 'canceled';
+        $rental->save();
+
+        return redirect()->back()->with('success', 'Booking canceled successfully.');
+    }
+
+    return redirect()->back()->with('error', 'You cannot cancel this booking.');
+}
+
+
 
      public function CreateProfile(Request $request): JsonResponse
     {
@@ -402,7 +432,15 @@ $request->validate([
     }
      function InvoiceList(Request $request){
         $user_id=$request->header('id');
-        return rental::where('user_id',$user_id)->get();
+$user=USer::findByID($user_id);
+
+        $currentBookings = $user->rentals()->where('start_date', '>', now())->get();
+    $pastBookings = $user->rentals()->where('start_date', '<=', now())->get();
+
+    return view('bookings.index', compact('currentBookings', 'pastBookings'));
+
+
+       // return rental::where('user_id',$user_id)->get();
     }
 
         public function ReadProfile(Request $request): JsonResponse

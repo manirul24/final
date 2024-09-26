@@ -31,11 +31,12 @@ class DashboardController extends Controller
        // return view('report.statistics-admin' ); // Admin dashboard view
     }
 
-    if ($user=='customer') {
-           // dd('adad');
-        return view('search',compact('user')); // Customer dashboard view
+            if($user=='customer') {
+         
+                 return redirect()->route('search')->with('success', 'Customer created successfully.');
+       // return view('search',compact('user')); // Customer dashboard view
     } else {
-            return view('index');
+            return view('search');
         }
 
       

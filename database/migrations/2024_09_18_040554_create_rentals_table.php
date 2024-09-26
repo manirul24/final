@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('start_date'); // DATE for the rental start date
             $table->date('end_date'); // DATE for the rental end date
             $table->decimal('total_cost', 8, 2); // DECIMAL for total cost with 8 digits and 2 decimal places
-             $table->enum('status', ['ongoing', 'completed', 'canceled'])->default('ongoing');  // Status
+             $table->enum('status', ['ongoing', 'completed', 'canceled','Booked'])->default('Booked');  // Status
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

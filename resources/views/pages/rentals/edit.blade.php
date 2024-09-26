@@ -21,7 +21,7 @@
                                     <option value="">Select Customer</option>
                                     @foreach ($customers as $customer)
                                         <option value="{{ $customer->id }}"
-                                            {{ $rental->customer_id == $customer->id ? 'selected' : '' }}>
+                                            {{ $rental->user_id == $customer->id ? 'selected' : '' }}>
                                             {{ $customer->name }}
                                         </option>
                                     @endforeach
@@ -67,6 +67,9 @@
                                     <option value="completed" {{ $rental->status == 'completed' ? 'selected' : '' }}>
                                         Completed</option>
                                     <option value="canceled" {{ $rental->status == 'canceled' ? 'selected' : '' }}>Canceled
+                                    <option value="Booked" {{ $rental->status == 'Booked' ? 'selected' : '' }}>Booked
+
+                                    <option value="Pending" {{ $rental->status == 'Pending' ? 'selected' : '' }}>Pending
                                     </option>
                                 </select>
                             </div>

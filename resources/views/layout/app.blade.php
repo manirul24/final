@@ -29,7 +29,7 @@
         <nav class="navbar sticky-top shadow-sm navbar-expand-lg navbar-light py-2">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Car Rental
+                    <img src="{{ asset('images/logo.png') }}" width="80%">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header01"
                     aria-controls="header01" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,15 +41,19 @@
                         <li class="nav-item me-4"><a class="nav-link" href="{{ url('/search') }}">bookings</a></li>
                         <li class="nav-item me-4"><a class="nav-link" href="{{ url('/userRegistration') }}">Singup</a>
                         </li>
-                        <li class="nav-item me-4"><a class="nav-link" href="{{ url('/search') }}">About</a></li>
-                        <li class="nav-item me-4"><a class="nav-link" href="{{ url('/') }}">Contact</a></li>
+
+                        <li class="nav-item me-4"><a class="nav-link" href="{{ url('#contact') }}">Contact</a></li>
+
 
 
                         @if (Cookie::get('token') !== null)
-                            <li><a href="{{ url('/profile') }}"> <i class="linearicons-user"></i> Account</a></li>
-                            <li><a class="btn btn-danger btn-sm" href="{{ url('/logout') }}"> Logout</a></li>
+                            <li class="nav-item me-4"><a class="nav-link" href="{{ url('/profile') }}"> Account</a>
+                            </li>
+                            <li class="nav-item me-4"><a class="btn btn-danger btn-sm" href="{{ url('/logout') }}">
+                                    Logout</a></li>
                         @else
-                            <li><a class="btn btn-danger btn-sm" href="{{ url('/userLogin') }}">Login</a></li>
+                            <li class="nav-item me-4"><a class="btn btn-primary btn-sm"
+                                    href="{{ url('/userLogin') }}">Login</a></li>
                         @endif
 
 

@@ -29,9 +29,11 @@ Route::get('/userLogin',[UserController::class,'LoginPage']);
 Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
 
 Route::get('/logout',[UserController::class,'UserLogout']);
-Route::get('/profile', [UserController::class, 'ProfilePage1']);
+Route::get('/profile', [UserController::class, 'ProfilePage1'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/CreateProfile', [UserController::class, 'CreateProfile'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/ReadProfile', [UserController::class, 'ReadProfile'])->middleware([TokenVerificationMiddleware::class]);
+
+Route::post('/bookings/cancel/{id}', [UserController::class, 'cancel'])->middleware([TokenVerificationMiddleware::class]);
 
 Route::get("/InvoiceList",[UserController::class,'InvoiceList'])->middleware([TokenVerificationMiddleware::class]);
 
