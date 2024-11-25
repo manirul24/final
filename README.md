@@ -2,7 +2,7 @@
 <br>
 <a href="https://github.com/manirul24/final/blob/main/enverment">env file</a>
 <br>
-<a href="https://drive.google.com/file/d/11cya4gyH5IJmR4QVj-TzYItk9siusyt6/view?usp=sharing">Project presentation video link</a>
+<!--a href="https://drive.google.com/file/d/11cya4gyH5IJmR4QVj-TzYItk9siusyt6/view?usp=sharing">Project presentation video link</a-->
 <br>
 admin access
 <br>
